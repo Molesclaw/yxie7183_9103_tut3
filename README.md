@@ -19,5 +19,11 @@ My second commit here
     - Sub item 2
 
 **Images**
+
 **Remote Images**
+
 ![An image of a cat](https://placekitten.com/200/300.jpg)
+
+**Local Images**
+
+![The Mona Lisa](readmeImages\Mona_Lisa_by_Leonardo_da_Vinci_500_x_700.jpg)
