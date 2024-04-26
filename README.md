@@ -17,3 +17,7 @@ My second commit here
 - Item 2
     - Sub item 1
     - Sub item 2
+
+**Images**
+**Remote Images**
+![An image of a cat](https://placekitten.com/200/300.jpg)
