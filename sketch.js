@@ -10,6 +10,7 @@ function setup() {
 function draw() {
   drawGrid();
   drawRectangle();
+  drawLine();
 }
 
 function drawGrid(){
@@ -43,5 +44,23 @@ function drawRectangle(){
 }
 
 function drawLine(){
+  //Draw Horizontal lines
+  for (let i = 0; i < 10; i ++){
+    let x = 0;
+    let y = floor(random(height/rectSize)) * rectSize;
+    let w = width;
+    let h = random(rectSize/4, rectSize/2);
+  }
+  fill(255, 250, 240);
+  rect(x, y, w, h);
 
+  //Draw Vertical lines
+  for (let i = 0; i < 10; i ++){
+    let x = floor(random(width/rectSize)) * rectSize;
+    let y = 0;
+    let w = random(rectSize/4, rectSize/2);
+    let h = height;
+  }
+  fill(255, 250, 240);
+  rect(x, y, w, h);
 }
