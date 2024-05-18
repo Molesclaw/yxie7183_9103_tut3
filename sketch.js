@@ -28,7 +28,7 @@ function drawGrid(){
 
 //draw random rectangles with random colors to mimic Mondrian painting
 function drawRectangle(){
-  for (let i = 0; i < 15; i ++){
+  for (let i = 0; i < 25; i ++){
     //floor() is used to round the number down to the nearest whole number
     let x = floor(random(width/rectSize)) * rectSize;
     let y = floor(random(height/rectSize)) * rectSize;
@@ -50,9 +50,10 @@ function drawLine(){
     let y = floor(random(height/rectSize)) * rectSize;
     let w = width;
     let h = random(rectSize/4, rectSize/2);
+
+    fill(255, 221, 0);
+    rect(x, y, w, h);
   }
-  fill(255, 250, 240);
-  rect(x, y, w, h);
 
   //Draw Vertical lines
   for (let i = 0; i < 10; i ++){
@@ -60,7 +61,8 @@ function drawLine(){
     let y = 0;
     let w = random(rectSize/4, rectSize/2);
     let h = height;
+
+    fill(255, 221, 0);
+    rect(x, y, w, h);
   }
-  fill(255, 250, 240);
-  rect(x, y, w, h);
 }
