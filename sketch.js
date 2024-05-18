@@ -57,11 +57,26 @@ function drawLine(){
     let h = rectSize/2;
 
     fill(255, 221, 0);
+    stroke(255, 250, 240);
     rect(0, y, width, h);
     
     //store the y and h values in the array, so the cross points can be 
     //drawn later
     horizontalLines.push({y: y, h: h});
+
+    //Add random colored squares along the horizontal line to mimic 
+    //Mondrian painting
+    for (let i = rectSize; i < width; i += rectSize){
+      if(random() > 0.3){ //Randomly decide to place a colored square
+        let randomColor = random([color(255, 221, 0), //yellow
+                                  color(255, 0, 0), //red
+                                  color(0, 0, 255), //blue
+                                  color(200, 200, 200)]); //grey
+        fill(randomColor);
+        noStroke();
+        square(i, y, rectSize/2);
+      }
+    }
   }
 
   //Draw Vertical lines
@@ -70,10 +85,24 @@ function drawLine(){
     let w =  rectSize/2;
 
     fill(255, 221, 0);
+    stroke(255, 250, 240);
     rect(x, 0, w, height);
     
     //store the x and w values in the array
     verticalLines.push({x: x, w: w});
+  
+    //Add random colored squares along the vertical line
+    for (let i = rectSize; i < height; i += rectSize){
+      if(random() > 0.3){ //Randomly decide to place a colored square
+        let randomColor = random([color(255, 221, 0), //yellow
+                                  color(255, 0, 0), //red
+                                  color(0, 0, 255), //blue
+                                  color(200, 200, 200)]); //grey
+        fill(randomColor);
+        noStroke();
+        square(x, i, rectSize/2);
+      }
+    }
   }
 
   //Draw cross points with new color, the cross points are the 
@@ -82,10 +111,9 @@ function drawLine(){
     for (let vertical of verticalLines){
       //
       if(vertical.x < width && horizontal.y < height){ 
-        let randomColor = random([color(255, 221, 0), //yellow
-                              color(255, 0, 0),   //red
-                              color(0, 0, 255),    //blue
-                              color(200, 200, 200)]);  //grey
+        let randomColor = random([color(255, 0, 0),   //red
+                                  color(0, 0, 255),    //blue
+                                  color(200, 200, 200)]);  //grey
       
         fill(randomColor);
         square(vertical.x, horizontal.y, rectSize/2);
