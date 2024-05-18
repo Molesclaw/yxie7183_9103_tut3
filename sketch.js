@@ -2,7 +2,7 @@
 let rectSize = 40;
 
 function setup() {
-  createCanvas(800, 800);
+  createCanvas(600, 600);
   background(255, 250, 240); //Floralwhite
   noLoop(); //make the draw function only run once
 }
@@ -37,7 +37,8 @@ function drawRectangle(){
 
     let randomColor = random([color(255, 221, 0), //yellow
                               color(255, 0, 0),   //red
-                              color(0, 0, 255)]); //blue
+                              color(0, 0, 255),    //blue
+                              color(200, 200, 200)]);  //grey
     fill(randomColor);
     rect(x, y, w, h);
   }
