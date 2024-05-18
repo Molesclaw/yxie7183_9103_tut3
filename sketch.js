@@ -18,6 +18,7 @@ function drawMondrian(){
   for (let y = 0; y < height; y += rectSize){
     for (let x = 0; x < width; x += rectSize){
       fill(255, 250, 240);
+      //noStroke();
       square(x, y, rectSize);
     }
   }
