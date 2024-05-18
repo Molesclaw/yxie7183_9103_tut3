@@ -15,12 +15,12 @@ function draw() {
 
 function drawGrid(){
   //rectangle layout
-  //This divides the whole canvas into grids, 
-  //so that the specific grid can be filled with color.
+  //This divides the whole canvas into grids, so that the specific grid
+  //can be filled with color.
   for (let y = 0; y < height; y += rectSize){
     for (let x = 0; x < width; x += rectSize){
       fill(255, 250, 240);
-      //noStroke();
+      noStroke(); //remove the outline of the grids
       square(x, y, rectSize);
     }
   }
@@ -32,48 +32,56 @@ function drawRectangle(){
     //floor() is used to round the number down to the nearest whole number
     let x = floor(random(width/rectSize)) * rectSize;
     let y = floor(random(height/rectSize)) * rectSize;
-    let w = random(1, 4) * rectSize;
-    let h = random(1, 4) * rectSize;
+    let w = random(1, 1.5) * rectSize;
+    let h = random(1, 1.5) * rectSize;
 
     let randomColor = random([color(255, 221, 0), //yellow
                               color(255, 0, 0),   //red
                               color(0, 0, 255),    //blue
                               color(200, 200, 200)]);  //grey
     fill(randomColor);
+    stroke(255, 250, 240);
+    strokeWeight(1);
     rect(x, y, w, h);
   }
 }
 
 function drawLine(){
+  //Make two arrays to store the horizontal and vertical lines
   let horizontalLines = [];
   let verticalLines = [];
 
   //Draw Horizontal lines
-  for (let i = 0; i < random(8,12); i ++){
+  for (let i = 0; i < random(8,10); i ++){
     let y = floor(random(height/rectSize)) * rectSize;
-    let w = floor(random(width/rectSize)) * rectSize;
     let h = rectSize/2;
 
     fill(255, 221, 0);
-    rect(0, y, w, h);
+    rect(0, y, width, h);
+    
+    //store the y and h values in the array, so the cross points can be 
+    //drawn later
     horizontalLines.push({y: y, h: h});
   }
 
   //Draw Vertical lines
-  for (let i = 0; i < random(8,12); i ++){
+  for (let i = 0; i < random(8,10); i ++){
     let x = floor(random(width/rectSize)) * rectSize;
     let w =  rectSize/2;
-    let h = floor(random(height/rectSize)) * rectSize;
 
     fill(255, 221, 0);
-    rect(x, 0, w, h);
+    rect(x, 0, w, height);
+    
+    //store the x and w values in the array
     verticalLines.push({x: x, w: w});
   }
 
-  //Draw cross points with new color
+  //Draw cross points with new color, the cross points are the 
+  //intersection of the horizontal and vertical lines
   for (let horizontal of horizontalLines){ 
     for (let vertical of verticalLines){
-      if(vertical.x < width && horizontal.y < height){
+      //
+      if(vertical.x < width && horizontal.y < height){ 
         let randomColor = random([color(255, 221, 0), //yellow
                               color(255, 0, 0),   //red
                               color(0, 0, 255),    //blue
