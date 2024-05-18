@@ -45,25 +45,43 @@ function drawRectangle(){
 }
 
 function drawLine(){
+  let horizontalLines = [];
+  let verticalLines = [];
+
   //Draw Horizontal lines
   for (let i = 0; i < random(8,12); i ++){
     let y = floor(random(height/rectSize)) * rectSize;
     let w = floor(random(width/rectSize)) * rectSize;
-    let h = random(rectSize/4, rectSize/2);
+    let h = rectSize/2;
 
     fill(255, 221, 0);
     rect(0, y, w, h);
+    horizontalLines.push({y: y, h: h});
   }
 
   //Draw Vertical lines
   for (let i = 0; i < random(8,12); i ++){
     let x = floor(random(width/rectSize)) * rectSize;
-    let w = random(rectSize/4, rectSize/2);
+    let w =  rectSize/2;
     let h = floor(random(height/rectSize)) * rectSize;
 
     fill(255, 221, 0);
     rect(x, 0, w, h);
+    verticalLines.push({x: x, w: w});
   }
 
   //Draw cross points with new color
+  for (let horizontal of horizontalLines){ 
+    for (let vertical of verticalLines){
+      if(vertical.x < width && horizontal.y < height){
+        let randomColor = random([color(255, 221, 0), //yellow
+                              color(255, 0, 0),   //red
+                              color(0, 0, 255),    //blue
+                              color(200, 200, 200)]);  //grey
+      
+        fill(randomColor);
+        square(vertical.x, horizontal.y, rectSize/2);
+      }
+    }
+  }
 }
