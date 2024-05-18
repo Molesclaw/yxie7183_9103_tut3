@@ -4,11 +4,12 @@ let rectSize = 40;
 function setup() {
   createCanvas(800, 800);
   background(255, 250, 240); //Floralwhite
+  noLoop(); //make the draw function only run once
 }
 
 function draw() {
   drawGrid();
-  testRect();
+  drawRectangle();
 }
 
 function drawGrid(){
@@ -24,36 +25,23 @@ function drawGrid(){
   }
 }
 
-
+//draw random rectangles with random colors to mimic Mondrian painting
 function drawRectangle(){
-  for (let i = 0; i < 30; i ++){
-    let x = random(width);
-    let y = random(height);
+  for (let i = 0; i < 15; i ++){
+    //floor() is used to round the number down to the nearest whole number
+    let x = floor(random(width/rectSize)) * rectSize;
+    let y = floor(random(height/rectSize)) * rectSize;
     let w = random(1, 4) * rectSize;
     let h = random(1, 4) * rectSize;
 
     let randomColor = random([color(255, 221, 0), //yellow
                               color(255, 0, 0),   //red
                               color(0, 0, 255)]); //blue
-                              
+    fill(randomColor);
+    rect(x, y, w, h);
   }
 }
 
-function testRect(){
-  fill(255, 221, 0); //yellow
-  square(80, 40, rectSize);
-  square(160, 40, rectSize);
-  rect(200, 120, rectSize*2, rectSize*3);
-  rect(300, 120, rectSize*3, rectSize);
+function drawLine(){
 
-  fill(255, 0, 0); //red
-  square(40, 80, rectSize);
-  square(200, 40, rectSize);
-  rect(320, 80, rectSize, rectSize*2);
-
-  fill(0, 0, 255); //blue
-  square(120, 40, rectSize);
-  square(40, 200, rectSize);
-  rect(320, 240, rectSize, rectSize*2);
-  rect(160, 360, rectSize, rectSize);
 }
