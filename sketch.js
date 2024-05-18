@@ -35,9 +35,9 @@ function drawRectangle(){
     let w = random(1, 1.5) * rectSize;
     let h = random(1, 1.5) * rectSize;
 
-    let randomColor = random([color(255, 221, 0), //yellow
-                              color(255, 0, 0),   //red
-                              color(0, 0, 255),    //blue
+    let randomColor = random([color(238,216,34), //yellow
+                              color(173,57,42),   //red
+                              color(67,103,187),    //blue
                               color(200, 200, 200)]);  //grey
     fill(randomColor);
     stroke(255, 250, 240);
@@ -56,7 +56,7 @@ function drawLine(){
     let y = floor(random(height/rectSize)) * rectSize;
     let h = rectSize/2;
 
-    fill(255, 221, 0);
+    fill(238,216,34);
     stroke(255, 250, 240);
     rect(0, y, width, h);
     
@@ -67,10 +67,10 @@ function drawLine(){
     //Add random colored squares along the horizontal line to mimic 
     //Mondrian painting
     for (let i = rectSize; i < width; i += rectSize){
-      if(random() > 0.3){ //Randomly decide to place a colored square
-        let randomColor = random([color(255, 221, 0), //yellow
-                                  color(255, 0, 0), //red
-                                  color(0, 0, 255), //blue
+      if(random() > 0.5){ //Randomly decide to place a colored square
+        let randomColor = random([color(238,216,34), //yellow
+                                  color(173,57,42), //red
+                                  color(67,103,187), //blue
                                   color(200, 200, 200)]); //grey
         fill(randomColor);
         noStroke();
@@ -84,7 +84,7 @@ function drawLine(){
     let x = floor(random(width/rectSize)) * rectSize;
     let w =  rectSize/2;
 
-    fill(255, 221, 0);
+    fill(238,216,34);
     stroke(255, 250, 240);
     rect(x, 0, w, height);
     
@@ -93,10 +93,10 @@ function drawLine(){
   
     //Add random colored squares along the vertical line
     for (let i = rectSize; i < height; i += rectSize){
-      if(random() > 0.3){ //Randomly decide to place a colored square
-        let randomColor = random([color(255, 221, 0), //yellow
-                                  color(255, 0, 0), //red
-                                  color(0, 0, 255), //blue
+      if(random() > 0.5){
+        let randomColor = random([color(238,216,34), //yellow
+                                  color(173,57,42), //red
+                                  color(67,103,187), //blue
                                   color(200, 200, 200)]); //grey
         fill(randomColor);
         noStroke();
@@ -111,8 +111,8 @@ function drawLine(){
     for (let vertical of verticalLines){
       //
       if(vertical.x < width && horizontal.y < height){ 
-        let randomColor = random([color(255, 0, 0),   //red
-                                  color(0, 0, 255),    //blue
+        let randomColor = random([color(173,57,42),   //red
+                                  color(67,103,187),    //blue
                                   color(200, 200, 200)]);  //grey
       
         fill(randomColor);
