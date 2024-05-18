@@ -4,5 +4,14 @@ function setup() {
 }
 
 function draw() {
+  //rectangle layout
+  let rectSize = 40;
+  for (let i = 0; i < width; x += rectSize){
+    for ()
+  }
+
+}
+
+function drawMondrian(){
 
 }
