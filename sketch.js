@@ -46,24 +46,24 @@ function drawRectangle(){
 
 function drawLine(){
   //Draw Horizontal lines
-  for (let i = 0; i < 10; i ++){
-    let x = 0;
+  for (let i = 0; i < random(8,12); i ++){
     let y = floor(random(height/rectSize)) * rectSize;
-    let w = width;
+    let w = floor(random(width/rectSize)) * rectSize;
     let h = random(rectSize/4, rectSize/2);
 
     fill(255, 221, 0);
-    rect(x, y, w, h);
+    rect(0, y, w, h);
   }
 
   //Draw Vertical lines
-  for (let i = 0; i < 10; i ++){
+  for (let i = 0; i < random(8,12); i ++){
     let x = floor(random(width/rectSize)) * rectSize;
-    let y = 0;
     let w = random(rectSize/4, rectSize/2);
-    let h = height;
+    let h = floor(random(height/rectSize)) * rectSize;
 
     fill(255, 221, 0);
-    rect(x, y, w, h);
+    rect(x, 0, w, h);
   }
+
+  //Draw cross points with new color
 }
