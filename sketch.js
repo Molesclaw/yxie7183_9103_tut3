@@ -1,3 +1,4 @@
+//This is a preliminary sketch for the group task, made by Yusong Xie
 //Set properties for the Mondrian painting
 let rectSize = 40;
 
