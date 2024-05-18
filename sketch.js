@@ -2,16 +2,16 @@
 let rectSize = 40;
 
 function setup() {
-  createCanvas(windowWidth, windowHeight);
+  createCanvas(800, 800);
   background(255, 250, 240); //Floralwhite
 }
 
 function draw() {
-  drawMondrian();
+  drawGrid();
   testRect();
 }
 
-function drawMondrian(){
+function drawGrid(){
   //rectangle layout
   //This divides the whole canvas into grids, 
   //so that the specific grid can be filled with color.
@@ -21,6 +21,21 @@ function drawMondrian(){
       //noStroke();
       square(x, y, rectSize);
     }
+  }
+}
+
+
+function drawRectangle(){
+  for (let i = 0; i < 30; i ++){
+    let x = random(width);
+    let y = random(height);
+    let w = random(1, 4) * rectSize;
+    let h = random(1, 4) * rectSize;
+
+    let randomColor = random([color(255, 221, 0), //yellow
+                              color(255, 0, 0),   //red
+                              color(0, 0, 255)]); //blue
+                              
   }
 }
 
