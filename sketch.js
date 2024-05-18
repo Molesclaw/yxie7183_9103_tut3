@@ -1,7 +1,8 @@
 function setup() {
-  createCanvas(400, 400);
+  createCanvas(windowWidth, windowHeight);
+  background(255, 250, 240); //Floralwhite
 }
 
 function draw() {
-  background(220);
+  
 }
