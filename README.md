@@ -6,3 +6,5 @@
 
 Preliminary work finished. 
 Made by Yusong Xie
+
+5.24 - Basically, this is our group code. I will start my own personal code
