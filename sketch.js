@@ -37,12 +37,12 @@ function drawGrid(){
 
 //draw random rectangles with random colors to mimic Mondrian painting
 function drawRectangle(){
-  for (let i = 0; i < 25; i ++){
+  for (let i = 0; i < 15; i ++){
     //floor() is used to round the number down to the nearest whole number
     let x = floor(random(mondrian.width/rectSize)) * rectSize;
     let y = floor(random(mondrian.height/rectSize)) * rectSize;
-    let w = random(1, 1.5) * rectSize;
-    let h = random(1, 1.5) * rectSize;
+    let w = random(2, 4) * rectSize;
+    let h = random(2, 4) * rectSize;
 
     let randomColor = random([color(238,216,34), //yellow
                               color(173,57,42),   //red
