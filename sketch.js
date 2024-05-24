@@ -53,6 +53,12 @@ function drawRectangle(){
     strokeWeight(1);
     rect(x + mondrian.xOffset, y + mondrian.yOffset, w, h);
   }
+
+  //Noticed some rectangles are overlapped. Try to fix it.
+  //These codes are from the p5.js no-overlap example for reference
+  //Set an array to store the rectangles
+  const overlappedRectangles = [];
+  let overlappedRectangle;
 }
 
 function drawLine(){
