@@ -247,8 +247,6 @@ function drawRectangle() {
   }
 }
 
-
-
 function drawLine(){
   //Make two arrays to store the horizontal and vertical lines
   horizontalLines = [];
@@ -323,7 +321,7 @@ function drawLine(){
   //intersection of the horizontal and vertical lines
   for (let horizontal of horizontalLines){ 
     for (let vertical of verticalLines){
-      //
+      //Check if the cross point is within the Mondrian painting
       if(vertical.x < mondrian.width && horizontal.y < mondrian.height){ 
         let randomColor = random([color(173,57,42),   //red
                                   color(67,103,187),    //blue
@@ -337,13 +335,6 @@ function drawLine(){
   }
 }
 
-
-function windowResized(){
-  resizeCanvas(windowWidth, windowHeight);
-  background(255, 250, 240);
-  calculateMondrian(); 
-  draw();
-}
 function windowResized(){
   resizeCanvas(windowWidth, windowHeight);
   background(255, 250, 240);
