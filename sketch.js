@@ -12,6 +12,7 @@ let canvasAspectRatio = 0;
 //Make two arrays to store the horizontal and vertical lines
 let horizontalLines = [];
 let verticalLines = [];
+let rectangles = [];
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -361,5 +362,34 @@ function calculateMondrian(){
     mondrian.height = height;
     mondrian.xOffset = 0;
     mondrian.yOffset = 0;
+  }
+}
+
+//My personal task start here
+//Add a rectangle at the nearest grid position when the mouse is clicked
+function mouseClicked(){
+  let x = floor((mouseX - mondrian.xOffset) / rectSize) * rectSize;
+  let y = floor((mouseY - mondrian.yOffset) / rectSize) * rectSize;
+  let w = rectSize;
+  let h = rectSize;
+  let validPosition = true;
+
+  // Check for overlap with existing rectangles
+  for (let rect of rectangles) {
+    if (!(x + w < rect.x || x > rect.x + rect.w || y + h < rect.y || y > rect.y + rect.h)) {
+      validPosition = false;
+      break;
+    }
+  }
+
+  // Draw the rectangle if a valid position is found
+  if (validPosition) {
+    // Draw the rectangle with a random color
+    let randomColor = random([color(238,216,34), color(173,57,42), color(67,103,187), color(200)]);
+    fill(randomColor);
+    noStroke();
+    strokeWeight(1);
+    rect(x + mondrian.xOffset, y + mondrian.yOffset, w, h);
+    rectangles.push({x: x, y: y, w: w, h: h}); // Add the rectangle to the array
   }
 }
