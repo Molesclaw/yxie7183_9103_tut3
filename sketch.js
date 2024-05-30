@@ -370,8 +370,9 @@ function calculateMondrian(){
 function mouseClicked(){
   let x = floor((mouseX - mondrian.xOffset) / rectSize) * rectSize;
   let y = floor((mouseY - mondrian.yOffset) / rectSize) * rectSize;
-  let w = rectSize;
-  let h = rectSize;
+  //create random width and height
+  let w = floor(random(1, 3)) * rectSize;
+  let h = floor(random(1, 3)) * rectSize;
   let validPosition = true;
 
   // Draw the rectangle if a valid position is found
