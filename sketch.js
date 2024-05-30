@@ -385,12 +385,26 @@ function mouseClicked(){
     rect(x + mondrian.xOffset, y + mondrian.yOffset, w, h);
   }
 
-  //Make sure the rectangles' position is within the Mondrian painting
-  if(x + w > mondrian.width){
-    w = mondrian.width - x;
+  //Make sure the rectangles' positions are within the Mondrian painting
+  if(x >=0 && y >=0 && x + w <= mondrian.width && y + h <= mondrian.height){
+    //Check if the position is within the design boundaries - helped by Copilot
+    let withinDesign = fakse;
+    for (let hLine of horizontalLines){
+      if(y >= hLine.y && y <= hLine.y + h){
+        for (let vLine of verticalLines){
+          if(x >= vLine.x && x <= vLine.x + w){
+        
+          withinDesign = true;
+          break;
+          }
+        }
+      }
+    }
   }
-  if(y + h > mondrian.height){
-    h = mondrian.height - y;
+
+  //If within the design boundaries, draw the rectangle
+  if(withinDesign){
+    drawRectangle(x, y, w, h);
   }
 
   //Add the rectangle to the array
