@@ -374,14 +374,6 @@ function mouseClicked(){
   let h = rectSize;
   let validPosition = true;
 
-  // Check for overlap with existing rectangles
-  for (let rect of rectangles) {
-    if (!(x + w < rect.x || x > rect.x + rect.w || y + h < rect.y || y > rect.y + rect.h)) {
-      validPosition = false;
-      break;
-    }
-  }
-
   // Draw the rectangle if a valid position is found
   if (validPosition) {
     // Draw the rectangle with a random color
