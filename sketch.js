@@ -383,6 +383,16 @@ function mouseClicked(){
     noStroke();
     strokeWeight(1);
     rect(x + mondrian.xOffset, y + mondrian.yOffset, w, h);
-    rectangles.push({x: x, y: y, w: w, h: h}); // Add the rectangle to the array
   }
+
+  //Make sure the rectangles' position is within the Mondrian painting
+  if(x + w > mondrian.width){
+    w = mondrian.width - x;
+  }
+  if(y + h > mondrian.height){
+    h = mondrian.height - y;
+  }
+
+  //Add the rectangle to the array
+  rectangles.push({x: x, y: y, w: w, h: h});
 }
