@@ -41,7 +41,7 @@ function drawGrid(){
 }
 
 function drawRectangle() {
-  //let rectangles = []; // Array to store generated rectangles
+  let rectangles = []; // Array to store generated rectangles
   let minRectangles = 10; // Minimum number of rectangles
   let maxRectangles = 15; // Maximum number of rectangles
 
