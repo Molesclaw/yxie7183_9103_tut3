@@ -17,6 +17,9 @@ let rectangles = [];
 //Set the default number of horizontal and vertical lines
 let numHorizontalLines = 7;
 let numVerticalLines = 7;
+ 
+//Set the mouseMoveEnabled to false as default
+let mouseMoveEnabled = false;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -467,7 +470,10 @@ function keyPressed() {
     numVerticalLines = min(13, numVerticalLines + 1);
   } else if (keyCode === LEFT_ARROW) {
     numVerticalLines = max(0, numVerticalLines - 1);
+  } else if (key === 'm' || key === 'M') {
+    mouseMoveEnabled = !mouseMoveEnabled;
   }
+
 
   //Add a eraser mode to remove specific patterns
   background(255, 250, 240); // Clear the canvas
@@ -476,6 +482,8 @@ function keyPressed() {
 
 // Add animation using mouseMoved
 function mouseMoved() {
+  if (!mouseMoveEnabled) return;
+
   let x = floor((mouseX - mondrian.xOffset) / rectSize) * rectSize;
   let y = floor((mouseY - mondrian.yOffset) / rectSize) * rectSize;
 
