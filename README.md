@@ -30,14 +30,14 @@ When I saw this artwork, I imagined the yellow lines as roads, with the colored 
 ![Black cloud comes, we still singing in the rain](https://cdn.britannica.com/38/93438-050-FA15A0BF/Gene-Kelly-Singin-in-the-Rain-1952.jpg)
 *People singing in the rain*
 
-Those pictures made me confirm the design. I think adding rectangles is like adding houses on a Broadway block. Controlling the lines is like controlling the number of people dancing down the road. The semi- transparent black represents this dark cloud or something else negative. Even though it spreads here, people's happiness can still be seen through the dark cloud.
+These pictures made me confirm the design. I think adding rectangles is like adding houses on a Broadway block. Controlling the lines is like controlling the number of people dancing down the road. The semi- transparent black represents this dark cloud or something else negative. Even though it spreads here, people's happiness can still be seen through the dark cloud.
 
 ### Changes Made to Group Code
-**Introduced Class for Rectangle and Line:** The original group code did not use classes. I converted the rectangle and line into two classes, making the code more concise.
+1. **Introduced Class for Rectangle and Line:** The original group code did not use classes. I converted the rectangle and line into two classes, making the code more concise.
 
-**Replacing randomly created lines with a fixed number of lines:** The original group code use random() function to draw both horizontal and vertical lines. I changed the random number to a fixed number, so that users can control the number of lines and interact.
+2. **Replacing randomly created lines with a fixed number of lines:** The original group code use random() function to draw both horizontal and vertical lines. I changed the random number to a fixed number, so that users can control the number of lines and interact.
 
 ### Internet Technique
-**Copilot:** I use it for simple code input and bug fixing.
+1. **Copilot:** I use it for simple code input and bug fixing.
 
-**ChatGPT:** It gave some functions that were not used in class, and I thus found those functions on p5.js.
+2. **ChatGPT:** It gave some functions that were not used in class, and I thus found those functions on p5.js.
