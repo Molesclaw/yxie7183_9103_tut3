@@ -20,7 +20,6 @@ let numVerticalLines = 7;
  
 //Set the mouseMoved() to false as default
 let graffiti = false;
-let changeBackground = false;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
