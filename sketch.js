@@ -367,6 +367,10 @@ function calculateMondrian(){
 
 //My personal task start here
 //Add a rectangle at the nearest grid position when the mouse is clicked
+/*
+Sometimes the rectangles are not shown on the canvas, not sure why.
+You can try to click on the canvas multiple times to see if it works
+*/
 function mouseClicked(){
   let x = floor((mouseX - mondrian.xOffset) / rectSize) * rectSize;
   let y = floor((mouseY - mondrian.yOffset) / rectSize) * rectSize;
@@ -374,23 +378,7 @@ function mouseClicked(){
   let h = floor(random(1, 3)) * rectSize;
 
   //Make sure the rectangles' positions are within the Mondrian painting
-  if(x >=0 && y >=0 && x <= mondrian.width && y <= mondrian.height){
-    //Check if the position is within the design boundaries - helped by Copilot
-    let withinDesign = false;
-    for (let hLine of horizontalLines) {
-      if (y >= hLine.y && y < (hLine.y + hLine.h)) {
-        for (let vLine of verticalLines) {
-          if (x >= vLine.x && x < (vLine.x + vLine.w)) {
-            withinDesign = true;
-            break;
-          }
-        }
-      }
-      if(withinDesign) break;
-    }
-  
-    //If within the design boundaries, draw the rectangle
-    if(withinDesign){
+  if(x >=mondrian.xOffset && y >=mondrian.yOffset && x <= mondrian.width && y <= mondrian.height){
       let randomColor = random([color(238,216,34), color(173,57,42), color(67,103,187), color(200)]);
       fill(randomColor);
       noStroke();
@@ -399,6 +387,5 @@ function mouseClicked(){
 
     //Add the rectangle to the array
     rectangles.push({x: x, y: y, w: w, h: h});
-    }
   }
 }
