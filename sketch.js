@@ -273,13 +273,15 @@ function drawLine(){
     }
     let h = rectSize/2;
 
-    fill(238,216,34);
-    noStroke();
-    rect(mondrian.xOffset, y + mondrian.yOffset, mondrian.width, h);
+    let newLine = new Line(0, y, mondrian.width, h, color(238,216,34));
+    newLine.display();
+    horizontalLines.push(newLine);
     
+    /* Group Task
     //store the y and h values in the array, so the cross points can be 
     //drawn later
     horizontalLines.push({y: y, h: h, x: 0, w: mondrian.width});
+    */
 
     //Add random colored squares along the horizontal line to mimic 
     //Mondrian painting
@@ -305,13 +307,19 @@ function drawLine(){
 
     let w =  rectSize/2;
 
+    let newLine = new Line(x, 0, w, mondrian.height, color(238, 216, 34));
+    newLine.display();
+    verticalLines.push(newLine);
+    
+    /*Group task 
     fill(238,216,34);
     noStroke();
     rect(x + mondrian.xOffset, mondrian.yOffset, w, mondrian.height);
     
     //store the x and w values in the array
     verticalLines.push({x: x, w: w, y: 0, h: mondrian.height});
-  
+    */
+
     //Add random colored squares along the vertical line
     for (let i = rectSize; i < mondrian.height; i += rectSize){
       if(random() > 0.5){
@@ -417,5 +425,22 @@ class Rectangle {
   overlaps(other) {
     return !(this.x + this.w <= other.x || this.x >= other.x + other.w ||
              this.y + this.h <= other.y || this.y >= other.y + other.h);
+  }
+}
+
+//Add a Line class to store the properties of the lines
+class Line {
+  constructor(x, y, w, h, color) {
+    this.x = x;
+    this.y = y;
+    this.w = w;
+    this.h = h;
+    this.color = color;
+  }
+
+  display() {
+    fill(this.color);
+    noStroke();
+    rect(this.x + mondrian.xOffset, this.y + mondrian.yOffset, this.w, this.h);
   }
 }
