@@ -14,6 +14,9 @@ let horizontalLines = [];
 let verticalLines = [];
 let rectangles = [];
 
+let numHorizontalLines = 7; // Default number of horizontal lines
+let numVerticalLines = 7; // Default number of vertical lines
+
 function setup() {
   createCanvas(windowWidth, windowHeight);
   background(255, 250, 240); //Floralwhite
@@ -22,6 +25,7 @@ function setup() {
 }
 
 function draw() {
+  background(255, 250, 240); //Floralwhite
   drawGrid();
   drawLine(); // draw line first
   drawRectangle();
@@ -34,7 +38,7 @@ function drawGrid(){
   for (let y = 0; y < mondrian.height; y += rectSize){
     for (let x = 0; x < mondrian.width; x += rectSize){
       fill(255, 250, 240);
-      noStroke(); //remove the outline of the grids
+      //noStroke(); //remove the outline of the grids
       square(x + mondrian.xOffset, y + mondrian.yOffset, rectSize);
     }
   }
@@ -260,11 +264,12 @@ function drawLine(){
   //Make two arrays to store the horizontal and vertical lines
   horizontalLines = [];
   verticalLines = [];
+
 //The starting point coordinates of Y, this is the position of the first horizontal line, and the subsequent vertical lines are arranged based on this.
     let firstY=floor(random(0,2))*rectSize;
     let firstX=floor(random(0,2))*rectSize;
   //Draw Horizontal lines
-  for (let i = 0; i < random(10,12); i ++){
+  for (let i = 0; i < numHorizontalLines; i ++){
     let y=firstY+floor(random(i,i*2))*rectSize+rectSize;
 
     //Limit the maximum value
@@ -299,7 +304,7 @@ function drawLine(){
   }
 
   //Draw Vertical lines
-  for (let i = 0; i < random(10,12); i ++){
+  for (let i = 0; i < numVerticalLines; i ++){
     let x = firstX+floor(random(i,i*2))*rectSize+rectSize;
     if(x>mondrian.width){
       x=mondrian.width
@@ -448,12 +453,12 @@ class Line {
 
 //Add keyboard control to add or reduce lines
 function keyPressed() {
-  if (keyCode === UP_ARROW) {
-    numHorizontalLines++;
-  } else if (keyCode === DOWN_ARROW) {
+  if (keyCode === DOWN_ARROW) {
+    numHorizontalLines ++
+  } else if (keyCode === UP_ARROW) {
     numHorizontalLines = max(0, numHorizontalLines - 1);
   } else if (keyCode === RIGHT_ARROW) {
-    numVerticalLines++;
+    numVerticalLines ++
   } else if (keyCode === LEFT_ARROW) {
     numVerticalLines = max(0, numVerticalLines - 1);
   }
