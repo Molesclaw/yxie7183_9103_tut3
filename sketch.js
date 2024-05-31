@@ -72,8 +72,9 @@ function drawRectangle() {
       validPosition = true;
       // Check for overlap with existing rectangles
       for (let rect of rectangles) {
-        if (!(x + w < rect.x || x > rect.x + rect.w || y + h < rect.y || y > rect.y + rect.h)) {
-          validPosition = false;
+        //if (!(x + w < rect.x || x > rect.x + rect.w || y + h < rect.y || y > rect.y + rect.h)) {
+        if (newRect.overlaps(rect)) { //Abouve is the group task, this is my personal change
+        validPosition = false;
           break;
         }
       }
@@ -83,12 +84,17 @@ function drawRectangle() {
     // Draw the rectangle if a valid position is found
     if (validPosition && h > 0) {
       // Draw the rectangle with a random color
+      /*
       let randomColor = random([color(238,216,34), color(173,57,42), color(67,103,187), color(200)]);
       fill(randomColor);
       noStroke();
       strokeWeight(1);
       rect(x + mondrian.xOffset, y + mondrian.yOffset, w, h);
-      rectangles.push({x: x, y: y, w: w, h: h}); // Add the rectangle to the array
+      Above is the group task, I will use the newRect object to draw the rectangle
+      */
+      newRect.display(); //Personal task
+      //rectangles.push({x: x, y: y, w: w, h: h}); // Add the rectangle to the array
+      rectangles.push(newRect); //Personal task
       if((w>rectSize||h>rectSize)&&h>w){
         let smallRectW = w;
         let smallRectH = floor(random(h/4,h/2));
@@ -381,11 +387,10 @@ function mouseClicked(){
 
   //Make sure the rectangles' positions are within the Mondrian painting
   if(x >= 0 && y >= 0 && x <= mondrian.width && y <= mondrian.height){
-      let randomColor = random([color(238,216,34), color(173,57,42), color(67,103,187), color(200)]);
-      fill(randomColor);
-      noStroke();
-      strokeWeight(1);
-      rect(x + mondrian.xOffset, y + mondrian.yOffset, w, h);
+    let randomColor = random([color(238,216,34), color(173,57,42), color(67,103,187), color(200)]);
+    fill(randomColor);
+    noStroke();
+    rect(x + mondrian.xOffset, y + mondrian.yOffset, w, h);
 
     //Add the rectangle to the array
     rectangles.push({x: x, y: y, w: w, h: h});
