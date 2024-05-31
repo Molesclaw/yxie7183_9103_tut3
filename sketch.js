@@ -310,7 +310,7 @@ function drawLine(){
     let newLine = new Line(x, 0, w, mondrian.height, color(238, 216, 34));
     newLine.display();
     verticalLines.push(newLine);
-    
+
     /*Group task 
     fill(238,216,34);
     noStroke();
@@ -413,6 +413,7 @@ class Rectangle {
     this.w = w;
     this.h = h;
     this.color = color;
+    
   }
 
   display() {
@@ -443,4 +444,20 @@ class Line {
     noStroke();
     rect(this.x + mondrian.xOffset, this.y + mondrian.yOffset, this.w, this.h);
   }
+}
+
+//Add keyboard control to add or reduce lines
+function keyPressed() {
+  if (keyCode === UP_ARROW) {
+    numHorizontalLines++;
+  } else if (keyCode === DOWN_ARROW) {
+    numHorizontalLines = max(0, numHorizontalLines - 1);
+  } else if (keyCode === RIGHT_ARROW) {
+    numVerticalLines++;
+  } else if (keyCode === LEFT_ARROW) {
+    numVerticalLines = max(0, numVerticalLines - 1);
+  }
+
+  background(255, 250, 240); // Clear the canvas
+  draw();
 }
