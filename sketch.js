@@ -480,6 +480,7 @@ function keyPressed() {
 }
 
 // Add animation using mouseMoved
+// I ued to wahnt to make it more like black mist, but it looks more like street graffiti
 function mouseMoved() {
   if (!graffiti) return; // Exit if graffiti mode is not enabled
 
