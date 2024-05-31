@@ -63,6 +63,9 @@ function drawRectangle() {
     let attempts = 0;
     let validPosition = false;
     let newRect;
+
+    //The floor() function is used to round the number down to the nearest integer,
+    //found in the p5.js reference - https://p5js.org/reference/#/p5/floor
     while (!validPosition && attempts < 1000) { 
       x = floor(random(mondrian.width / rectSize)) * rectSize;
       w = rectSize; // Keep rectangle width constant
