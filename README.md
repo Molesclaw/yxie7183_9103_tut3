@@ -35,6 +35,8 @@ Those pictures made me confirm the design. I think adding rectangles is like add
 ### Changes Made to Group Code
 **Introduced Class for Rectangle and Line:** The original group code did not use classes. I converted the rectangle and line into two classes, making the code more concise.
 
+**Replacing randomly created lines with a fixed number of lines:** The original group code use random() function to draw both horizontal and vertical lines. I changed the random number to a fixed number, so that users can control the number of lines and interact.
+
 ### Internet Technique
 **Copilot:** I use it for simple code input and bug fixing.
 
