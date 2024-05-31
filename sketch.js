@@ -343,7 +343,6 @@ function windowResized(){
   background(255, 250, 240);
   calculateMondrian(); 
   draw();
-  reDraw();
 }
 
 function calculateMondrian(){
@@ -413,15 +412,5 @@ class Rectangle {
   overlaps(other) {
     return !(this.x + this.w <= other.x || this.x >= other.x + other.w ||
              this.y + this.h <= other.y || this.y >= other.y + other.h);
-  }
-}
-
-function reDraw(){
-  drawGrid();
-  drawLine();
-  for (let rect of rectangles){
-    fill(rect.color);
-    noStroke();
-    rect(rect.x + mondrian.xOffset, rect.y + mondrian.yOffset, rect.w, rect.h);
   }
 }
