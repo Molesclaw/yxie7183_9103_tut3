@@ -371,31 +371,28 @@ function mouseClicked(){
   let x = floor((mouseX - mondrian.xOffset) / rectSize) * rectSize;
   let y = floor((mouseY - mondrian.yOffset) / rectSize) * rectSize;
   //create random width and height
+  /*
   let w = floor(random(1, 3)) * rectSize;
   let h = floor(random(1, 3)) * rectSize;
-  let validPosition = true;
-
-  // Draw the rectangle if a valid position is found
-  if (validPosition) {
-    // Draw the rectangle with a random color
-    let randomColor = random([color(238,216,34), color(173,57,42), color(67,103,187), color(200)]);
-    fill(randomColor);
-    noStroke();
-    strokeWeight(1);
-    rect(x + mondrian.xOffset, y + mondrian.yOffset, w, h);
-  }
+  This is the original code, I want to make those rectangles created by 
+  mouse click have different sizes. But for unknown reasons, sometimes
+  clicking on the canvas will not create a rectangle. So I changed the
+  code to the following:
+  */
+  let w = rectSize;
+  let h = rectSize;
 
   //Make sure the rectangles' positions are within the Mondrian painting
   if(x >=0 && y >=0 && x <= mondrian.width && y <= mondrian.height){
     //Check if the position is within the design boundaries - helped by Copilot
     let withinDesign = false;
-    for (let hLine of horizontalLines){
-      if(y >= hLine.y && y <= hLine.y + h){
         for (let vLine of verticalLines){
-          if(x >= vLine.x && x <= vLine.x + w){
-        
-          withinDesign = true;
-          break;
+    for (let hLine of horizontalLines) {
+      if (y >= hLine.y && y < (hLine.y + hLine.h)) {
+        for (let vLine of verticalLines) {
+          if (x >= vLine.x && x < (vLine.x + vLine.w)) {
+            withinDesign = true;
+            break;
           }
         }
       }
