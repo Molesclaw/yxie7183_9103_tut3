@@ -473,3 +473,16 @@ function keyPressed() {
   background(255, 250, 240); // Clear the canvas
   draw();
 }
+
+// Add animation using mouseMoved
+function mouseMoved() {
+  let x = floor((mouseX - mondrian.xOffset) / rectSize) * rectSize;
+  let y = floor((mouseY - mondrian.yOffset) / rectSize) * rectSize;
+
+  if (x >= 0 && y >= 0 && x <= mondrian.width && y <= mondrian.height) {
+    let randomColor = random([color(238, 216, 34), color(173, 57, 42), color(67, 103, 187), color(200)]);
+    fill(randomColor);
+    noStroke();
+    rect(x + mondrian.xOffset, y + mondrian.yOffset, rectSize, rectSize);
+  }
+}
