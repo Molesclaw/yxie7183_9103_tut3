@@ -343,6 +343,7 @@ function windowResized(){
   background(255, 250, 240);
   calculateMondrian(); 
   draw();
+  reDraw();
 }
 
 function calculateMondrian(){
@@ -380,7 +381,7 @@ function mouseClicked(){
   let h = floor(random(1, 3)) * rectSize;
 
   //Make sure the rectangles' positions are within the Mondrian painting
-  if(x >=mondrian.xOffset && y >=mondrian.yOffset && x <= mondrian.width && y <= mondrian.height){
+  if(x >= 0 && y >= 0 && x <= mondrian.width && y <= mondrian.height){
       let randomColor = random([color(238,216,34), color(173,57,42), color(67,103,187), color(200)]);
       fill(randomColor);
       noStroke();
@@ -412,5 +413,15 @@ class Rectangle {
   overlaps(other) {
     return !(this.x + this.w <= other.x || this.x >= other.x + other.w ||
              this.y + this.h <= other.y || this.y >= other.y + other.h);
+  }
+}
+
+function reDraw(){
+  drawGrid();
+  drawLine();
+  for (let rect of rectangles){
+    fill(rect.color);
+    noStroke();
+    rect(rect.x + mondrian.xOffset, rect.y + mondrian.yOffset, rect.w, rect.h);
   }
 }
