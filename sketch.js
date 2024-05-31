@@ -18,8 +18,9 @@ let rectangles = [];
 let numHorizontalLines = 7;
 let numVerticalLines = 7;
  
-//Set the mouseMoveEnabled to false as default
-let mouseMoveEnabled = false;
+//Set the mouseMoved() to false as default
+let graffiti = false;
+let changeBackground = false;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -470,8 +471,8 @@ function keyPressed() {
     numVerticalLines = min(13, numVerticalLines + 1);
   } else if (keyCode === LEFT_ARROW) {
     numVerticalLines = max(0, numVerticalLines - 1);
-  } else if (key === 'm' || key === 'M') {
-    mouseMoveEnabled = !mouseMoveEnabled;
+  } else if (key === 'g' || key === 'G') {
+    graffiti = !graffiti;
   }
 
 
@@ -482,15 +483,15 @@ function keyPressed() {
 
 // Add animation using mouseMoved
 function mouseMoved() {
-  if (!mouseMoveEnabled) return;
+  if (!graffiti) return; // Exit if graffiti mode is not enabled
 
   let x = floor((mouseX - mondrian.xOffset) / rectSize) * rectSize;
   let y = floor((mouseY - mondrian.yOffset) / rectSize) * rectSize;
+  let size = map(mouseX, 0, width, rectSize / 2, rectSize * 2);
 
   if (x >= 0 && y >= 0 && x <= mondrian.width && y <= mondrian.height) {
-    let randomColor = random([color(238, 216, 34), color(173, 57, 42), color(67, 103, 187), color(200)]);
-    fill(randomColor);
+    fill(0, 0, 0, 50); // semi-transparent black
     noStroke();
-    rect(x + mondrian.xOffset, y + mondrian.yOffset, rectSize, rectSize);
+    rect(x + mondrian.xOffset, y + mondrian.yOffset, size, size);
   }
 }
