@@ -452,6 +452,11 @@ class Line {
 }
 
 //Add keyboard control to add or reduce lines
+/*
+Sometimes the lines would overlap with each other, this might cause inaccurate lines
+shown on the canvas. But for keeping the design simple, I didn't add the code to check or update.
+You can try to press the arrow keys multiple times to see the changes.
+*/
 function keyPressed() {
   if (keyCode === DOWN_ARROW) {
     numHorizontalLines = min(13, numHorizontalLines + 1);
