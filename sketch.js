@@ -41,7 +41,7 @@ function drawGrid(){
 }
 
 function drawRectangle() {
-  let rectangles = []; // Array to store generated rectangles
+  //let rectangles = []; // Array to store generated rectangles
   let minRectangles = 10; // Minimum number of rectangles
   let maxRectangles = 15; // Maximum number of rectangles
 
@@ -55,7 +55,7 @@ function drawRectangle() {
     // Attempt to place the rectangle without overlap, with a maximum number of attempts
     let attempts = 0;
     let validPosition = false;
-    let x, y, w;
+    let newRect;
     while (!validPosition && attempts < 1000) { 
       x = floor(random(mondrian.width / rectSize)) * rectSize;
       w = rectSize; // Keep rectangle width constant
@@ -65,9 +65,11 @@ function drawRectangle() {
       if (y + h > yMax) {
         y -= (y + h - yMax); // Adjust position if exceeding top boundary
       }
-
+      
+      //Personal task: add a rectangle class to store the properties of the rectangles
+      newRect = new Rectangle(x, y, w, h, random([color(238,216,34), color(173,57,42), color(67,103,187), color(200)]));
+      
       validPosition = true;
-
       // Check for overlap with existing rectangles
       for (let rect of rectangles) {
         if (!(x + w < rect.x || x > rect.x + rect.w || y + h < rect.y || y > rect.y + rect.h)) {
@@ -387,5 +389,28 @@ function mouseClicked(){
 
     //Add the rectangle to the array
     rectangles.push({x: x, y: y, w: w, h: h});
+  }
+}
+
+//Add rectangle class to store the properties of the rectangles
+class Rectangle {
+  constructor(x, y, w, h, color) {
+    this.x = x;
+    this.y = y;
+    this.w = w;
+    this.h = h;
+    this.color = color;
+  }
+
+  display() {
+    fill(this.color);
+    noStroke();
+    rect(this.x + mondrian.xOffset, this.y + mondrian.yOffset, this.w, this.h);
+  }
+
+  // Method to check if this rectangle overlaps with another rectangle
+  overlaps(other) {
+    return !(this.x + this.w <= other.x || this.x >= other.x + other.w ||
+             this.y + this.h <= other.y || this.y >= other.y + other.h);
   }
 }
