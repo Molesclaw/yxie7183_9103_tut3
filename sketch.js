@@ -38,7 +38,7 @@ function drawGrid(){
   for (let y = 0; y < mondrian.height; y += rectSize){
     for (let x = 0; x < mondrian.width; x += rectSize){
       fill(255, 250, 240);
-      //noStroke(); //remove the outline of the grids
+      noStroke(); //remove the outline of the grids, you can check the difference by commenting this line
       square(x + mondrian.xOffset, y + mondrian.yOffset, rectSize);
     }
   }
@@ -454,11 +454,11 @@ class Line {
 //Add keyboard control to add or reduce lines
 function keyPressed() {
   if (keyCode === DOWN_ARROW) {
-    numHorizontalLines ++
+    numHorizontalLines = min(13, numHorizontalLines + 1);
   } else if (keyCode === UP_ARROW) {
     numHorizontalLines = max(0, numHorizontalLines - 1);
   } else if (keyCode === RIGHT_ARROW) {
-    numVerticalLines ++
+    numVerticalLines = min(13, numVerticalLines + 1);
   } else if (keyCode === LEFT_ARROW) {
     numVerticalLines = max(0, numVerticalLines - 1);
   }
