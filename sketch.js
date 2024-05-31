@@ -18,9 +18,6 @@ let rectangles = [];
 let numHorizontalLines = 7;
 let numVerticalLines = 7;
 
-//Set the erase mode to false
-let eraseMode = false;
-
 function setup() {
   createCanvas(windowWidth, windowHeight);
   background(255, 250, 240); //Floralwhite
@@ -396,15 +393,7 @@ function calculateMondrian(){
 Sometimes the rectangles are not shown on the canvas, not sure why.
 You can try to click on the canvas multiple times to see if it works
 */
-function mouseClicked() {
-  if (eraserMode) {
-    removeElement(mouseX, mouseY);
-  } else {
-    addRectangle(mouseX, mouseY);
-  }
-}
-
-function addRectangle(mouseX, mouseY) {
+function mouseClicked(){
   let x = floor((mouseX - mondrian.xOffset) / rectSize) * rectSize;
   let y = floor((mouseY - mondrian.yOffset) / rectSize) * rectSize;
   let w = floor(random(1, 3)) * rectSize;
@@ -478,9 +467,9 @@ function keyPressed() {
     numVerticalLines = min(13, numVerticalLines + 1);
   } else if (keyCode === LEFT_ARROW) {
     numVerticalLines = max(0, numVerticalLines - 1);
-  } else if (key === 'E' || key === 'e') { //Add a eraser mode to remove specific patterns
-    eraserMode = !eraserMode;
   }
-  background(255, 250, 240); 
+
+  //Add a eraser mode to remove specific patterns
+  background(255, 250, 240); // Clear the canvas
   draw();
 }
