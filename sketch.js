@@ -370,23 +370,13 @@ function calculateMondrian(){
 function mouseClicked(){
   let x = floor((mouseX - mondrian.xOffset) / rectSize) * rectSize;
   let y = floor((mouseY - mondrian.yOffset) / rectSize) * rectSize;
-  //create random width and height
-  /*
   let w = floor(random(1, 3)) * rectSize;
   let h = floor(random(1, 3)) * rectSize;
-  This is the original code, I want to make those rectangles created by 
-  mouse click have different sizes. But for unknown reasons, sometimes
-  clicking on the canvas will not create a rectangle. So I changed the
-  code to the following:
-  */
-  let w = rectSize;
-  let h = rectSize;
 
   //Make sure the rectangles' positions are within the Mondrian painting
   if(x >=0 && y >=0 && x <= mondrian.width && y <= mondrian.height){
     //Check if the position is within the design boundaries - helped by Copilot
     let withinDesign = false;
-        for (let vLine of verticalLines){
     for (let hLine of horizontalLines) {
       if (y >= hLine.y && y < (hLine.y + hLine.h)) {
         for (let vLine of verticalLines) {
