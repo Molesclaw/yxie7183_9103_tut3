@@ -29,7 +29,6 @@ function setup() {
 }
 
 function draw() {
-  background(255, 250, 240); //Floralwhite
   drawGrid();
   drawLine(); // draw line first
   drawRectangle();
