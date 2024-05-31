@@ -386,9 +386,9 @@ function mouseClicked(){
   }
 
   //Make sure the rectangles' positions are within the Mondrian painting
-  if(x >=0 && y >=0 && x + w <= mondrian.width && y + h <= mondrian.height){
+  if(x >=0 && y >=0 && x <= mondrian.width && y <= mondrian.height){
     //Check if the position is within the design boundaries - helped by Copilot
-    let withinDesign = fakse;
+    let withinDesign = false;
     for (let hLine of horizontalLines){
       if(y >= hLine.y && y <= hLine.y + h){
         for (let vLine of verticalLines){
@@ -399,14 +399,19 @@ function mouseClicked(){
           }
         }
       }
+      if(withinDesign) break;
+    }
+  
+    //If within the design boundaries, draw the rectangle
+    if(withinDesign){
+      let randomColor = random([color(238,216,34), color(173,57,42), color(67,103,187), color(200)]);
+      fill(randomColor);
+      noStroke();
+      strokeWeight(1);
+      rect(x + mondrian.xOffset, y + mondrian.yOffset, w, h);
+
+    //Add the rectangle to the array
+    rectangles.push({x: x, y: y, w: w, h: h});
     }
   }
-
-  //If within the design boundaries, draw the rectangle
-  if(withinDesign){
-    drawRectangle(x, y, w, h);
-  }
-
-  //Add the rectangle to the array
-  rectangles.push({x: x, y: y, w: w, h: h});
 }
